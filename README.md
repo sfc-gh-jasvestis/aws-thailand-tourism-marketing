@@ -9,7 +9,6 @@ Thailand's tourism marketing team manages ฿2.4B across 350 campaigns but can't
 ```mermaid
 flowchart LR
     KIN[Kinesis] --> SPS[Snowpipe Streaming]
-    SP --> RAW[RAW Tables]
     SPS --> RAW
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
