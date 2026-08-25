@@ -122,7 +122,7 @@ Industry research and Snowflake customer outcomes:
 - **AI-powered marketing analytics improves campaign ROI by 20-40% through better targeting** — [McKinsey Marketing](https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights)
 - **Social listening enables 3x faster response to brand crises vs traditional monitoring** — [Gartner Marketing](https://www.gartner.com/en/marketing)
 - **TikTok influencer marketing generates 5-10x higher engagement than traditional ads for tourism** — [Phocuswright](https://www.phocuswright.com/Travel-Research)
-- **Wyndham Hotels** (Snowflake customer): unified 30+ brands on a single data platform, enabling real-time revenue optimization across 9,000+ properties -- [snowflake.com/customers/wyndham](https://www.snowflake.com/en/customers/all-customers/case-study/wyndham/)
+- **Wyndham Hotels** (Snowflake customer): unified 30+ brands on a single data platform, enabling real-time revenue optimization across 9,000+ properties -- [snowflake.com/customers/accor](https://www.snowflake.com/en/customers/all-customers/case-study/accor/)
 
 ## Key Demo Numbers
 
