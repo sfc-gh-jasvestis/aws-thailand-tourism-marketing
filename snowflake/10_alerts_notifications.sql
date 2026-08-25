@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_thailand_tourism_marketing_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: SENTIMENT_CRISIS_ALERT
 CREATE OR REPLACE ALERT APP.SENTIMENT_CRISIS_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_thailand_tourism_marketing_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Destination Marketing Intelligence: Negative sentiment crisis detected — PR response needed',
     'Negative sentiment crisis detected — PR response needed'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_thailand_tourism_marketing_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Destination Marketing Intelligence: Viral content detected — amplification opportunity',
     'Viral content detected — amplification opportunity'
   );
