@@ -35,36 +35,36 @@ export default function HomePage() {
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Total Value at Risk" value="Loading..." status="danger" />
-        <KPICard title="Critical Entities" value="—" status="warning" />
-        <KPICard title="Anomalies Detected" value="—" status="warning" />
-        <KPICard title="Documents Indexed" value="—" status="neutral" />
+        <KPICard title="Campaign ROI" value="4.2x" status="neutral" />
+        <KPICard title="Digital Spend (MTD)" value="฿180M" status="neutral" />
+        <KPICard title="Reach (Unique)" value="42M" status="neutral" />
+        <KPICard title="Conversion Rate" value="3.1%" status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Chart
           data={data?.timeseries || [{ period: 'Loading', value: 0 }]}
           type="line"
           xKey="period"
-          yKeys={[{ key: 'value', name: 'Value' }]}
-          title="Performance Trend"
+          yKeys={[{ key: 'value', name: '฿M' }]}
+          title="Marketing Spend vs Bookings"
         />
         <Chart
           data={data?.categories || [{ category: 'Loading', count: 0 }]}
           type="bar"
           xKey="category"
-          yKeys={[{ key: 'count', name: 'Count' }]}
-          title="Category Distribution"
+          yKeys={[{ key: 'count', name: 'ROI' }]}
+          title="Channel Performance"
         />
       </div>
       <DataTable
         columns={[
-          { key: 'id', header: 'ID' },
-          { key: 'name', header: 'Name' },
+          { key: 'id', header: '#' },
+          { key: 'name', header: 'Campaign' },
           { key: 'status', header: 'Status' },
-          { key: 'value', header: 'Value' },
+          { key: 'value', header: 'ROI' },
         ]}
         data={data?.entities || []}
-        title="Entity Health"
+        title="Campaign Performance"
       />
     </div>
   );
@@ -72,16 +72,16 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Primary Metric" value="—" />
-        <KPICard title="Secondary Metric" value="—" />
-        <KPICard title="Tertiary Metric" value="—" />
+        <KPICard title="Social Media Share" value="38%" />
+        <KPICard title="Search Intent" value="↑ 14%" />
+        <KPICard title="Influencer Impact" value="2.1x" />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Loading', y: 0 }]}
         type="area"
         xKey="x"
-        yKeys={[{ key: 'y', name: 'Metric' }]}
-        title="Detailed Analytics"
+        yKeys={[{ key: 'y', name: 'Attribution %' }]}
+        title="Multi-Touch Attribution"
         height={400}
       />
     </div>
@@ -94,17 +94,17 @@ export default function HomePage() {
           data={data?.breakdown || [{ label: 'A', value: 30 }, { label: 'B', value: 70 }]}
           type="pie"
           xKey="label"
-          yKeys={[{ key: 'value', name: 'Value' }]}
-          title="Breakdown"
+          yKeys={[{ key: 'value', name: 'Engagement %' }]}
+          title="Content Performance by Type"
         />
         <ActionMemo
-          persona={{ name: 'Analyst', role: 'Operations' }}
+          persona={{ name: 'Patchara Suthikul', role: 'Marketing VP' }}
           context={{}}
           onGenerate={async () => ({
             subject: 'Action Required',
-            body: 'AI-generated recommendation based on current data.',
+            body: 'AI-generated recommendation based on current data patterns and predicted trends.',
             urgency: 'HIGH',
-            actions: ['Review anomalies', 'Escalate to management', 'Schedule intervention'],
+            actions: ['Scale TikTok campaign (3.8x ROI)', 'Reallocate print budget to social', 'Brief creative on wellness tourism trend'],
           })}
         />
       </div>
@@ -116,13 +116,12 @@ export default function HomePage() {
       <AskAI
         title="Ask AI"
         sampleQuestions={[
-          'What is the current status?',
-          'Which entities are at highest risk?',
-          'Show me the trend for the last 30 days',
+          'Which channel delivers best ROI for India market?',
+          'Show attribution path for high-value bookings',
+          'What content themes trend for wellness tourism?',
         ]}
         mode="both"
         onSubmit={async (question, mode) => {
-          // In production, this calls the Snowflake API route
           return {
             answer: `[Demo Mode] Response to: "${question}" (${mode} mode). Connect to Snowflake for live data.`,
             sql: mode === 'sql' ? 'SELECT * FROM CURATED.SUMMARY LIMIT 10;' : undefined,
@@ -179,8 +178,8 @@ export default function HomePage() {
 
   const tabs = [
     { id: 'executive-cockpit', label: 'Executive Cockpit', icon: '📊', content: executiveCockpit },
-    { id: 'domain-1', label: 'Analytics', icon: '📈', content: domainTab1 },
-    { id: 'domain-2', label: 'Actions', icon: '⚡', content: domainTab2 },
+    { id: 'domain-1', label: 'Attribution', icon: '📈', content: domainTab1 },
+    { id: 'domain-2', label: 'Content & Creative', icon: '⚡', content: domainTab2 },
     { id: 'ask-ai', label: 'Ask AI', icon: '🤖', content: askAiTab },
     { id: 'architecture', label: 'Architecture & Data', icon: '🏗️', content: architectureTab },
   ];
