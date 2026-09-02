@@ -1,16 +1,13 @@
--- ============================================================================
--- Destination Marketing Intelligence
--- Marketing intelligence for Thailand's destination campaigns — Comprehend analyzes sentiment on social content, AI_EXTRACT identifies trending topics, and Cortex Search enables instant content discovery for marketing teams.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS MARKETING_INTEL;
-CREATE WAREHOUSE IF NOT EXISTS MARKETING_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE MARKETING_INTEL;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-thailand-tourism-marketing.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-thailand-tourism-marketing
+-- This is the schema that is actually deployed for THAILAND_TOURISM_MARKETING.
 
-USE WAREHOUSE MARKETING_WH;
+-- THAILAND_TOURISM_MARKETING  (Destination Marketing Intelligence)
+-- generated from generator/demo_specs/aws-thailand-tourism-marketing.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS THAILAND_TOURISM_MARKETING;
+CREATE SCHEMA IF NOT EXISTS THAILAND_TOURISM_MARKETING.RAW;
+CREATE SCHEMA IF NOT EXISTS THAILAND_TOURISM_MARKETING.CURATED;
+CREATE SCHEMA IF NOT EXISTS THAILAND_TOURISM_MARKETING.APP;
+USE DATABASE THAILAND_TOURISM_MARKETING;
+
+-- 5 real regions; entity names carry their region so the two always agree
