@@ -32,15 +32,22 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // KPI values come from /api/data, which reads CURATED.KPI_SUMMARY. The literal
+  // stays as a fallback so the card still renders if the API is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Campaign ROI" value="4.2x" status="neutral" />
-        <KPICard title="Digital Spend (MTD)" value="฿180M" status="neutral" />
-        <KPICard title="Reach (Unique)" value="42M" status="neutral" />
-        <KPICard title="Conversion Rate" value="3.1%" status="neutral" />
+        <KPICard title="Campaign ROI" value={kpiVal('Campaign ROI', '4.2x')} status="neutral" />
+        <KPICard title="Digital Spend (MTD)" value={kpiVal('Digital Spend (MTD)', '฿180M')} status="neutral" />
+        <KPICard title="Reach (Unique)" value={kpiVal('Reach (Unique)', '42M')} status="neutral" />
+        <KPICard title="Conversion Rate" value={kpiVal('Conversion Rate', '3.1%')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -87,9 +94,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Social Media Share" value="38%" />
-        <KPICard title="Search Intent" value="↑ 14%" />
-        <KPICard title="Influencer Impact" value="2.1x" />
+        <KPICard title="Social Media Share" value={kpiVal('Social Media Share', '38%')} />
+        <KPICard title="Search Intent" value={kpiVal('Search Intent', '↑ 14%')} />
+        <KPICard title="Influencer Impact" value={kpiVal('Influencer Impact', '2.1x')} />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]}
